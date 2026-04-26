@@ -1,1 +1,32 @@
-<p>products works!</p>
+<section class="products-page">
+    <h1>Productos destacados</h1>
+
+    @if (loading) {
+    <div>Cargando productos...</div>
+    }
+
+    @if (!loading) {
+
+    <div class="grid">
+
+        @for (product of products; track product.id) {
+
+        <div class="card">
+
+            <h3>{{ product.name }}</h3>
+
+            <p>{{ product.description }}</p>
+
+            <span>{{ product.price }}€</span>
+
+            <button>Comprar</button>
+
+        </div>
+
+        }
+
+    </div>
+
+    }
+
+</section>
