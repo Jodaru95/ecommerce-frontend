@@ -1,0 +1,81 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #f8f9fb;
+    color: #111;
+}
+
+.hero {
+    padding: 100px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 16px;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: .9;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: white;
+    color: #111;
+}
+
+.btn-secondary {
+    border: 1px solid white;
+    color: white;
+}
+
+.categories {
+    padding: 60px 40px;
+}
+
+.categories h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+
+.benefits {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 18px;
+    flex-wrap: wrap;
+}

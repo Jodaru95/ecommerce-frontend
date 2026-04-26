@@ -1,0 +1,66 @@
+.navbar {
+    height: 75px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.brand {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.icon {
+    font-size: 1.4rem;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.menu a:hover {
+    color: #2563eb;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.login {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 600;
+}
+
+.cart {
+    text-decoration: none;
+    font-size: 1.4rem;
+}
