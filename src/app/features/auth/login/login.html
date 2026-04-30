@@ -6,7 +6,8 @@
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-            <input type="text" placeholder="Usuario" formControlName="username">
+            <input type="text" placeholder="Usuario" formControlName="username"
+                [class.invalid]="form.get('username')?.invalid && form.get('username')?.touched">
 
             <input type="password" placeholder="Contraseña" formControlName="password">
 
@@ -25,6 +26,11 @@
             }
 
         </form>
+
+        <p class="register-link">
+            ¿No tienes cuenta?
+            <a routerLink="/register">Crear una cuenta</a>
+        </p>
 
     </div>
 

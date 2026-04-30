@@ -1,35 +1,31 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductService } from '../../../core/services/product.service';
 import { Product } from '../../../core/models/product.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule],
+  imports:[RouterLink],
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
 export class Products implements OnInit {
 
   private productService = inject(ProductService);
-  private cdr = inject(ChangeDetectorRef);
 
-  products: Product[] = [];
-  loading = true;
+  products = signal<Product[]>([]);
+  loading = signal(true);
 
   ngOnInit(): void {
     this.productService.getAll().subscribe({
       next: data => {
-        this.products = data;
-        this.loading = false;
-        //this.cdr.detectChanges();
+        this.products.set(data);
+        this.loading.set(false);
       },
       error: err => {
         console.error(err);
-        this.loading = false;
-        //this.cdr.detectChanges();
+        this.loading.set(false);
       }
     });
   }

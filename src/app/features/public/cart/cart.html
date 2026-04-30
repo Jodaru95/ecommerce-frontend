@@ -1,0 +1,86 @@
+<section class="cart-page">
+
+    <h1>Tu carrito</h1>
+
+    @if (items().length === 0) {
+
+    <div class="empty">
+        <p>No tienes productos añadidos.</p>
+        <a routerLink="/products" class="go-shop">
+            Ir a comprar
+        </a>
+    </div>
+
+    }
+
+    @if (items().length > 0) {
+
+    <div class="cart-grid">
+
+        <div class="items">
+
+            @for (item of items(); track item.product.id) {
+
+            <div class="item-card">
+
+                <div class="info">
+
+                    <h3>{{ item.product.name }}</h3>
+
+                    <p>{{ item.product.description }}</p>
+
+                    <span class="line-price">
+                        {{ (item.quantity * item.product.price).toFixed(2) }} €
+                    </span>
+
+                </div>
+
+                <div class="actions">
+
+                    <div class="qty-controls">
+
+                        <button (click)="decrease(item.product.id)">-</button>
+
+                        <span>{{ item.quantity }}</span>
+
+                        <button (click)="increase(item.product.id)">+</button>
+
+                    </div>
+
+                    <button class="remove-btn" (click)="remove(item.product.id)">
+                        Eliminar
+                    </button>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+        <div class="summary">
+
+            <h2>Resumen</h2>
+
+            <p>Productos: {{ totalItems() }}</p>
+
+            <p class="total">
+                Total: {{ totalPrice().toFixed(2) }} €
+            </p>
+
+            <button class="checkout-btn" (click)="checkout()">
+                Finalizar compra
+            </button>
+
+            <button class="clear-btn" (click)="clear()">
+                Vaciar carrito
+            </button>
+
+        </div>
+
+    </div>
+
+    }
+
+</section>

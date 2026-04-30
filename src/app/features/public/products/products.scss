@@ -1,74 +1,76 @@
 .products-page {
-    padding: 60px;
-    background: #f8fafc;
-    min-height: 100vh;
+    padding: 40px;
 }
 
-.top {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.top h1 {
-    font-size: 2.4rem;
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
     font-weight: 800;
-    color: #111827;
 }
 
-.top p {
+.loading {
+    font-size: 1.1rem;
     color: #6b7280;
-    margin-top: 10px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 
 .card {
     background: white;
     border-radius: 18px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
-    transition: all .25s ease;
+    padding: 22px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    transition: 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-}
-
-.card img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    transform: translateY(-4px);
 }
 
 .card h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 10px;
+}
+
+.card p {
+    color: #6b7280;
+    min-height: 48px;
 }
 
 .price {
     display: block;
+    margin-top: 15px;
     font-size: 1.4rem;
     font-weight: 800;
     color: #2563eb;
-    margin-bottom: 15px;
 }
 
 button {
+    margin-top: 18px;
     width: 100%;
     border: none;
-    padding: 14px;
-    border-radius: 12px;
     background: #2563eb;
     color: white;
+    padding: 12px;
+    border-radius: 10px;
     font-weight: 700;
     cursor: pointer;
 }
 
 button:hover {
     background: #1d4ed8;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    cursor: pointer;
 }

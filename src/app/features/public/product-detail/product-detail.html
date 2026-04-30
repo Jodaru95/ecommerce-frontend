@@ -1,1 +1,50 @@
-<p>product-detail works!</p>
+<section class="detail-page">
+
+    @if (loading()) {
+    <div>Cargando producto...</div>
+    }
+
+    @if (!loading() && product()) {
+
+    <div class="detail-card">
+
+        <div class="image-box">
+            🖥️
+        </div>
+
+        <div class="info">
+
+            <h1>{{ product()!.name }}</h1>
+
+            <p>{{ product()!.description }}</p>
+
+            <span class="price">{{ product()!.price }} €</span>
+
+            <p class="stock">
+                Stock disponible: {{ product()!.stock }}
+            </p>
+
+            <div class="qty">
+
+                <button (click)="decrease()">-</button>
+
+                <span>{{ quantity() }}</span>
+
+                <button (click)="increase()">+</button>
+
+            </div>
+
+            <div class="actions">
+                <button class="buy-btn" (click)="addToCart()">
+                    Añadir al carrito
+                </button>
+                <a routerLink="/products" class="back-btn">← Volver</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    }
+
+</section>

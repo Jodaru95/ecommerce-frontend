@@ -1,18 +1,40 @@
-<header class="navbar">
+<nav class="navbar">
+
     <div class="logo" routerLink="/home">
-        <span class="icon">🟦</span>
-        <span class="brand">TechStore</span>
+        <span class="brand">Ecommerce</span>
     </div>
 
-    <nav class="menu">
-        <a routerLink="/home">Inicio</a>
+    <div class="menu">
+
+        <a routerLink="/home">Home</a>
+
+        @if(!isAdmin()){
         <a routerLink="/products">Productos</a>
-        <a href="#">Ofertas</a>
-    </nav>
+        }
+        
+        @if (!isAuthenticated()) {
+        <a routerLink="/login">Login</a>
+        }
 
-    <div class="actions">
-        <a routerLink="/login" class="login">Entrar</a>
-        <a href="#" class="cart">🛒</a>
+        @if (isAuthenticated() && !isAdmin()) {
+        <a routerLink="/profile">Mi perfil</a>
+        }
+
+        @if (isAdmin()) {
+        <a routerLink="/admin/dashboard">Dashboard</a>
+        <a routerLink="/admin/products">Gestionar productos</a>
+        }
+
+        @if (isAuthenticated()) {
+        <a (click)="logout()">Logout</a>
+        }
+
+        @if (!isAdmin()) {
+        <a routerLink="/cart" class="cart">
+            🛒 {{ cartCount() }}
+        </a>
+        }
+
     </div>
 
-</header>
+</nav>

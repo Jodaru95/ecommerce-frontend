@@ -1,27 +1,34 @@
 <section class="products-page">
+
     <h1>Productos destacados</h1>
 
-    @if (loading) {
-    <div>Cargando productos...</div>
+    @if (loading()) {
+    <div class="loading">
+        Cargando productos...
+    </div>
     }
 
-    @if (!loading) {
+    @if (!loading()) {
 
     <div class="grid">
 
-        @for (product of products; track product.id) {
+        @for (product of products(); track product.id) {
 
-        <div class="card">
+        <a class="card-link" [routerLink]="['/product', product.id]">
 
-            <h3>{{ product.name }}</h3>
+            <div class="card">
 
-            <p>{{ product.description }}</p>
+                <h3>{{ product.name }}</h3>
 
-            <span>{{ product.price }}€</span>
+                <p>{{ product.description }}</p>
 
-            <button>Comprar</button>
+                <span class="price">{{ product.price }} €</span>
 
-        </div>
+                <button type="button">Ver producto</button>
+
+            </div>
+
+        </a>
 
         }
 

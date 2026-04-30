@@ -1,15 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../../core/services/auth.service';
-import { StorageService } from '../../../core/services/storage.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
@@ -17,7 +16,6 @@ export class Login {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-  private storage = inject(StorageService);
   private router = inject(Router);
 
   loading = false;
@@ -40,9 +38,13 @@ export class Login {
 
     this.authService.login(this.form.value as any).subscribe({
       next: (response) => {
-        localStorage.setItem('token', response.accessToken);
-        localStorage.setItem('refreshToken', response.refreshToken);
-        this.router.navigate(['/home']);
+
+        if (response.role === 'ADMIN') {
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
+
       },
       error: () => {
         this.errorMessage = 'Usuario o contraseña incorrectos';
